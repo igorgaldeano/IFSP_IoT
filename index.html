@@ -126,15 +126,25 @@
             <div class="wrapper">
                 <div class="padding-container-15 onion-content">
                     <div id="control">
-                        <button id="btnDesliga" onclick="setLight('desliga')" class="button text-center">DESLIGAR</button>
-                        <button id="btnLiga" onclick="setLight('liga')" class="button text-center">LIGAR</button>
+                        <button id="btnDesliga" onclick="liga()" class="button text-center">DESLIGAR</button>
+                        <button id="btnLiga" onclick="desliga()" class="button text-center">LIGAR</button>
                     </div>
                 </div>
             </div>
         </div>
 	      <script>
-         function setLight(state) {
-             url = '/controle/' + state;
+
+            function liga() {
+             url = '/controle/liga';
+					   if(window.XMLHttpRequest)
+						     request = new XMLHttpRequest();
+					   else
+						     request = new ActiveXObject("Microsoft.XMLHTTP");
+					   request.open('GET', url, false);
+					   request.send();
+         };
+         function desliga(state) {
+             url = '/controle/desliga';
 					   if(window.XMLHttpRequest)
 						     request = new XMLHttpRequest();
 					   else

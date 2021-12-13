@@ -4,6 +4,6 @@ echo "Content-type: application/json"
 echo ""
 echo '{"success":"ok"}'
 
-/www/cgi-bin/controle.sh 000000 &
+/www/controle/controle.sh 000000 &
 
 exit 0
