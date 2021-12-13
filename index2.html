@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <title>IFSP - IoT Automação</title>
+        <style>
+         html, body {
+             height: 100%;
+             width: 100%;
+             margin: 0;
+             padding: 0;
+         }
+
+         * {
+             -webkit-box-sizing: border-box;
+             -moz-box-sizing: border-box;
+             box-sizing: border-box;
+             font-family: sans-serif;
+             -webkit-touch-callout: none;
+             -webkit-user-select: none;
+             -khtml-user-select: none;
+             -moz-user-select: none;
+             -ms-user-select: none;
+             user-select: none;
+         }
+
+         .button {
+             height: 150px;
+             width: 150px;
+             font-weight: bold;
+             margin: auto;
+             margin-top: 30px;
+             padding: 25px;
+             border-radius: 50%;
+             text-align: center;
+             
+         }
+
+         .text-center {
+             text-align: center;
+         }
+
+         .instruction {
+             text-align: center;
+             color: #00c;
+         }
+
+         .big {
+             font-weight: 400;
+             font-size: 24pt;
+         }
+
+         .small {
+             font-size: 9pt;
+         }
+
+         #control {
+             height: 100%;
+         }
+         #timer {
+             position: absolute;
+             bottom: 0;
+             width: 100%;
+             background: #ff0;
+         }
+         
+         #btnDesliga {
+             background-color: #ff4444;
+             /*border: 1px solid #ff4444;*/
+         }
+         
+         #btnDesliga:active {
+             background-color: #CC0000;
+         }
+         
+         
+         #btnLiga {
+             background-color: #00C851;
+             /*border: 1px solid #00C851;*/
+         }
+         #btnLiga:active {
+             background-color: #007E33;
+         }
+
+        </style>
+    </head>
+    <body>
+        <h1 style="font-family: 'Montserrat', sans-serif; text-align: center;">Olá, este é o Interruptor!</h1>
+        <h2 style="font-family: 'Montserrat', sans-serif; text-align: center;">Para ligar ou desligar a luz, basta pressionar os botões abaixo.</h2>
+
+        <div class="wrapper">
+            <div class="padding-container-15 onion-content">
+                <div id="control">
+                    <div id="btnLiga" onclick="setLight('liga')" class="button text-center"></div>
+
+                    <div id="btnDesliga" onclick="setLight('desliga')" class="button text-center"></div>
+                </div>
+            </div>
+        </div>
+	      <script>
+         function setLight(state) {
+             url = '/controle/' + state;
+					   if(window.XMLHttpRequest)
+						     request = new XMLHttpRequest();
+					   else
+						     request = new ActiveXObject("Microsoft.XMLHTTP");
+					   request.open('GET', url, false);
+					   request.send();
+         };
+        </script>
+    </body>
+</html>
